@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private WebView webView;
-    private static final String DEFAULT_URL = "http://192.168.1.100:5000";
+    private static final String DEFAULT_URL = "https://robot-arm-35np.onrender.com";
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override

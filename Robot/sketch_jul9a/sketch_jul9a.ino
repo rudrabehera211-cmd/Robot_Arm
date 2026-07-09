@@ -7,7 +7,7 @@
 const char* ssid = "Android";
 const char* password = "12345678";
 
-const char* flaskServer = "http://10.252.205.82:5000";
+const char* flaskServer = "https://robot-arm-35np.onrender.com";
 
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 

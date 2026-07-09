@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         settings.setBuiltInZoomControls(true);
 
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("http://10.252.205.82:5000/");
+        webView.loadUrl("https://robot-arm-35np.onrender.com/");
     }
 
     @Override
