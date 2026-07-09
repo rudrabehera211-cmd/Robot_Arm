@@ -1,0 +1,352 @@
+[
+  {
+    "time": "2026-07-09T16:21:18.510160",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:21:28.530615",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:21:39.059103",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:21:50.194851",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:22:00.315710",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:22:10.455317",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:22:21.013409",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:22:31.584538",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:22:42.208390",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:22:52.234305",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:23:03.261074",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:23:13.258643",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:23:23.598318",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:23:33.946182",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:23:45.143203",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:23:56.041466",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:24:09.883315",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:24:21.505544",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:24:31.587792",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:24:41.908286",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:24:52.472905",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:25:02.774288",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:25:12.955062",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:25:44.521157",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:25:54.194862",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:26:06.472630",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:26:16.511893",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:26:26.677619",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:26:37.106862",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:27:02.151355",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:27:21.006294",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:27:57.375261",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:28:05.391650",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:28:15.623874",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:28:25.907168",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:28:36.340637",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:28:46.571704",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:28:57.597842",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:29:07.694888",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:30:21.825655",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:30:31.905929",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:30:43.019827",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:30:53.117356",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:31:03.748232",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:31:13.929843",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:31:24.281546",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:31:38.910488",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:31:49.083218",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:38:38.614300",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:38:49.727160",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:39:00.377721",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:39:11.310388",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:39:22.490416",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:39:33.106598",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:39:43.350395",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:39:57.472576",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:40:08.997766",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:40:21.076919",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:40:39.750460",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:40:47.009055",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:41:00.868080",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:41:16.112572",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:41:29.295677",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:41:58.468173",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:42:31.665696",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:42:45.604891",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:42:53.447415",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:43:34.624569",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:43:50.722955",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  },
+  {
+    "time": "2026-07-09T16:45:24.604955",
+    "type": "motion",
+    "details": "PIR sensor triggered"
+  }
+]

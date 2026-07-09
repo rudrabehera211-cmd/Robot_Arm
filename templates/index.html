@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboArm Controller</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>RoboArm Controller</h1>
+            <div class="status-bar">
+                <span id="connection-status" class="status disconnected">Disconnected</span>
+                <span id="guard-status" class="status guard-off">Guard: OFF</span>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="control-panel">
+                <section class="servo-controls">
+                    <h2>Servo Control</h2>
+                    <div class="slider-group">
+                        <label>Base (0-180)</label>
+                        <input type="range" id="base" min="0" max="180" value="90" data-channel="0">
+                        <span id="base-value">90</span>
+                    </div>
+                    <div class="slider-group">
+                        <label>Shoulder (90-180)</label>
+                        <input type="range" id="shoulder" min="90" max="180" value="90" data-channel="1">
+                        <span id="shoulder-value">90</span>
+                    </div>
+                    <div class="slider-group">
+                        <label>Elbow (0-90)</label>
+                        <input type="range" id="elbow" min="0" max="90" value="0" data-channel="2">
+                        <span id="elbow-value">0</span>
+                    </div>
+                    <div class="slider-group">
+                        <label>Gripper (90-130)</label>
+                        <input type="range" id="gripper" min="90" max="130" value="90" data-channel="3">
+                        <span id="gripper-value">90</span>
+                    </div>
+                </section>
+
+                <section class="presets">
+                    <h2>Presets</h2>
+                    <div class="preset-buttons">
+                        <button onclick="setPreset('home')">Home</button>
+                        <button onclick="setPreset('grab')">Grab</button>
+                        <button onclick="setPreset('reach')">Reach</button>
+                        <button onclick="setPreset('rest')">Rest</button>
+                        <button onclick="setPreset('wave')">Wave</button>
+                    </div>
+                </section>
+
+                <section class="joystick-section">
+                    <h2>Joystick Control</h2>
+                    <div class="joystick-container">
+                        <canvas id="joystick" width="200" height="200"></canvas>
+                    </div>
+                    <select id="joystick-target">
+                        <option value="base">Base</option>
+                        <option value="shoulder">Shoulder</option>
+                        <option value="elbow">Elbow</option>
+                    </select>
+                </section>
+
+                <section class="voice-control">
+                    <h2>Voice Control</h2>
+                    <button id="voice-btn" onclick="toggleVoice()">Push to Talk</button>
+                    <div id="voice-status">Say: "base 90", "grab", "home", etc.</div>
+                </section>
+
+                <section class="waypoints">
+                    <h2>Waypoints</h2>
+                    <button onclick="addWaypoint()">Save Position</button>
+                    <div id="waypoint-list"></div>
+                </section>
+            </div>
+
+            <div class="camera-panel">
+                <section class="camera-feed">
+                    <h2>Camera Feed</h2>
+                    <img id="camera-stream" src="/stream" alt="Camera Stream">
+                    <div class="camera-controls">
+                        <button onclick="takeSnapshot()">Snapshot</button>
+                    </div>
+                </section>
+
+                <section class="guard-mode">
+                    <h2>Theft Protection</h2>
+                    <button id="guard-btn" onclick="toggleGuard()">Enable Guard Mode</button>
+                    <div id="guard-alerts"></div>
+                </section>
+
+                <section class="position-history">
+                    <h2>Position History</h2>
+                    <canvas id="history-chart" width="400" height="200"></canvas>
+                </section>
+            </div>
+        </div>
+
+        <footer>
+            <p>RoboArm Controller v1.0</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
