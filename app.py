@@ -3,28 +3,20 @@ import os
 import time
 import threading
 from datetime import datetime
-from pathlib import Path
-from flask import Flask, render_template, jsonify, request, Response, send_file, send_from_directory
-from flask_cors import CORS
+from flask import Flask, render_template, jsonify, request, Response
 from config import Config
 import cv2
 import numpy as np
 
-app = Flask(__name__, static_folder='build/static', template_folder='build')
+try:
+    from flask_cors import CORS
+except ImportError:
+    def CORS(app):
+        return app
+
+app = Flask(__name__, static_folder='static', template_folder='templates')
 app.config.from_object(Config)
 CORS(app)
-
-# Serve React build for production
-BUILD_DIR = Path(__file__).resolve().parent / 'build'
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def serve_react(path):
-    if path and (BUILD_DIR / path).exists():
-        return send_from_directory(str(BUILD_DIR), path)
-    index = BUILD_DIR / 'index.html'
-    if index.exists():
-        return send_file(str(index))
-    return render_template('index.html')
 
 class RoboArmController:
     def __init__(self):
