@@ -181,7 +181,7 @@ def get_presets():
 
 @app.route('/status', methods=['GET'])
 def get_status():
-    connected = (time.time() - controller.last_heartbeat) < 5
+    connected = (time.time() - controller.last_heartbeat) < 15
     return jsonify({
         'connected': connected,
         'positions': controller.servo_positions,
