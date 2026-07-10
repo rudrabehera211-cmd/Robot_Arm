@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'services/camera_service.dart';
-import 'screens/home_screen.dart';
+import 'screens/splash_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,7 +43,7 @@ class _RoboArmAppState extends State<RoboArmApp> {
           elevation: 0,
         ),
       ),
-      home: HomeScreen(cameraService: _cameraService),
+      home: SplashScreen(cameraService: _cameraService),
     );
   }
 }

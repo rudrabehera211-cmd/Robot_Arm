@@ -24,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _connected = false;
   bool _fetching = false;
   bool _guardMode = false;
+  String _joystickMode = 'base_shoulder';
   List<dynamic> _waypoints = [];
   List<dynamic> _history = [];
   List<dynamic> _alerts = [];
@@ -121,17 +122,37 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  static const Map<String, List<String>> _joystickModes = {
+    'base_shoulder': ['base', 'shoulder'],
+    'elbow_gripper': ['elbow', 'gripper'],
+    'base_elbow': ['base', 'elbow'],
+    'shoulder_gripper': ['shoulder', 'gripper'],
+  };
+  static const Map<String, String> _joystickModeLabels = {
+    'base_shoulder': 'Base + Shoulder',
+    'elbow_gripper': 'Elbow + Gripper',
+    'base_elbow': 'Base + Elbow',
+    'shoulder_gripper': 'Shoulder + Gripper',
+  };
+
   void _onJoystickMoved(double dx, double dy) {
-    final base = (_positions['base']! + dx * 0.5).clamp(0, 180).toDouble();
-    final shoulder = (_positions['shoulder']! - dy * 0.5).clamp(90, 180).toDouble();
+    final parts = _joystickModes[_joystickMode]!;
+    final xServo = parts[0];
+    final yServo = parts[1];
+    final limits = _servoLimits;
+    final mins = _servoMins;
+
+    final newX = (_positions[xServo]! + dx * 0.5).clamp(mins[xServo]!, limits[xServo]!).toDouble();
+    final newY = (_positions[yServo]! - dy * 0.5).clamp(mins[yServo]!, limits[yServo]!).toDouble();
+
     setState(() {
-      _positions['base'] = base;
-      _positions['shoulder'] = shoulder;
+      _positions[xServo] = newX;
+      _positions[yServo] = newY;
     });
     _debounceTimer?.cancel();
     _debounceTimer = Timer(const Duration(milliseconds: 30), () {
-      ApiService.setServo(0, base.round()).catchError((_) {});
-      ApiService.setServo(1, shoulder.round()).catchError((_) {});
+      ApiService.setServo(_servoChannels[xServo]!, newX.round()).catchError((_) {});
+      ApiService.setServo(_servoChannels[yServo]!, newY.round()).catchError((_) {});
     });
   }
 
@@ -258,6 +279,8 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 16),
             _sectionHeader('Joystick'),
             const SizedBox(height: 8),
+            _joystickModeSelector(),
+            const SizedBox(height: 8),
             JoystickWidget(onMove: _onJoystickMoved),
             const SizedBox(height: 16),
             _sectionHeader('Presets'),
@@ -350,6 +373,32 @@ class _HomeScreenState extends State<HomeScreen> {
         fontWeight: FontWeight.w700,
         color: Theme.of(context).colorScheme.primary,
       ),
+    );
+  }
+
+  Widget _joystickModeSelector() {
+    return Row(
+      children: [
+        Icon(Icons.tune, size: 16, color: Colors.cyan.shade300),
+        const SizedBox(width: 8),
+        Text('X/Y:', style: TextStyle(fontSize: 12, color: Colors.cyan.shade300)),
+        const SizedBox(width: 8),
+        Expanded(
+          child: DropdownButton<String>(
+            value: _joystickMode,
+            isExpanded: true,
+            dropdownColor: const Color(0xFF1A1F35),
+            style: const TextStyle(fontSize: 13, color: Colors.white),
+            underline: const SizedBox(),
+            items: _joystickModeLabels.entries.map((e) {
+              return DropdownMenuItem(value: e.key, child: Text(e.value));
+            }).toList(),
+            onChanged: (v) {
+              if (v != null) setState(() => _joystickMode = v);
+            },
+          ),
+        ),
+      ],
     );
   }
 
