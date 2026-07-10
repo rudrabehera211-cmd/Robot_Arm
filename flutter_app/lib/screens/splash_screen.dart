@@ -19,6 +19,7 @@ class _SplashScreenState extends State<SplashScreen>
   late Animation<double> _textOpacity;
   late Animation<Offset> _textSlide;
   late Animation<double> _taglineOpacity;
+  Timer? _navTimer;
 
   @override
   void initState() {
@@ -46,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     _controller.forward();
 
-    Timer(const Duration(seconds: 3), _navigateToHome);
+    _navTimer = Timer(const Duration(seconds: 3), _navigateToHome);
   }
 
   void _navigateToHome() {
@@ -62,6 +63,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   void dispose() {
+    _navTimer?.cancel();
     _controller.dispose();
     super.dispose();
   }

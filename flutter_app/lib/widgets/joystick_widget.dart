@@ -51,7 +51,8 @@ class _JoystickWidgetState extends State<JoystickWidget> {
           child: GestureDetector(
             onPanStart: (_) => setState(() => _isDragging = true),
             onPanUpdate: (details) {
-                      final RenderBox box = context.findRenderObject() as RenderBox;
+                      final box = context.findRenderObject() as RenderBox?;
+                      if (box == null || !box.hasSize) return;
                       final local = box.globalToLocal(details.globalPosition);
                       final center = box.size.width / 2;
                       _handleMove(local.dx - center, local.dy - center);

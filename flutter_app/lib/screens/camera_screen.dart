@@ -47,6 +47,10 @@ class _CameraScreenState extends State<CameraScreen> {
   void _exitFullscreen() {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  }
+
+  void _closeScreen() {
+    _exitFullscreen();
     if (mounted) Navigator.of(context).pop();
   }
 
@@ -54,7 +58,8 @@ class _CameraScreenState extends State<CameraScreen> {
   void dispose() {
     _frameSubscription?.cancel();
     _transformController.dispose();
-    _exitFullscreen();
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     super.dispose();
   }
 
@@ -67,7 +72,7 @@ class _CameraScreenState extends State<CameraScreen> {
     return PopScope(
       canPop: true,
       onPopInvokedWithResult: (didPop, _) {
-        if (!didPop) _exitFullscreen();
+        if (!didPop) _closeScreen();
       },
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -114,7 +119,7 @@ class _CameraScreenState extends State<CameraScreen> {
               child: SafeArea(
                 child: IconButton(
                   icon: const Icon(Icons.close, color: Colors.white, size: 28),
-                  onPressed: _exitFullscreen,
+                  onPressed: _closeScreen,
                   style: IconButton.styleFrom(
                     backgroundColor: Colors.black54,
                     padding: const EdgeInsets.all(8),
