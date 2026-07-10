@@ -22,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     'base': 90, 'shoulder': 90, 'elbow': 0, 'gripper': 90,
   };
   bool _connected = false;
+  bool _fetching = false;
   Timer? _statusTimer;
   Timer? _debounceTimer;
 
@@ -57,19 +58,27 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _fetchStatus() async {
-    final status = await ApiService.getStatus();
-    if (mounted) {
-      setState(() {
-        _connected = status['connected'] == true;
-        final pos = status['positions'] as Map<String, dynamic>?;
-        if (pos != null) {
-          for (final key in _positions.keys) {
-            if (pos.containsKey(key)) {
-              _positions[key] = (pos[key] as num).toDouble();
+    if (_fetching) return;
+    _fetching = true;
+    try {
+      final status = await ApiService.getStatus().timeout(const Duration(seconds: 5));
+      if (mounted) {
+        setState(() {
+          _connected = status['connected'] == true;
+          final pos = status['positions'] as Map<String, dynamic>?;
+          if (pos != null) {
+            for (final key in _positions.keys) {
+              if (pos.containsKey(key)) {
+                _positions[key] = (pos[key] as num).toDouble();
+              }
             }
           }
-        }
-      });
+        });
+      }
+    } catch (_) {
+      if (mounted) setState(() => _connected = false);
+    } finally {
+      _fetching = false;
     }
   }
 
@@ -79,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _debounceTimer = Timer(const Duration(milliseconds: 50), () {
       final channel = _servoChannels[servo]!;
       final angle = value.round();
-      ApiService.setServo(channel, angle);
+      ApiService.setServo(channel, angle).catchError((_) {});
     });
   }
 
@@ -92,13 +101,13 @@ class _HomeScreenState extends State<HomeScreen> {
     });
     _debounceTimer?.cancel();
     _debounceTimer = Timer(const Duration(milliseconds: 30), () {
-      ApiService.setServo(0, base.round());
-      ApiService.setServo(1, shoulder.round());
+      ApiService.setServo(0, base.round()).catchError((_) {});
+      ApiService.setServo(1, shoulder.round()).catchError((_) {});
     });
   }
 
   void _onPreset(String name) {
-    ApiService.setPreset(name);
+    ApiService.setPreset(name).catchError((_) {});
   }
 
   void _openFullscreen() {

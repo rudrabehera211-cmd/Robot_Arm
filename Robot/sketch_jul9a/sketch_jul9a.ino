@@ -55,26 +55,9 @@ void setup() {
     Serial.println("Server: " + String(flaskServer));
 }
 
-void loop() {
-    if (WiFi.status() != WL_CONNECTED) {
-        Serial.println("WiFi disconnected, reconnecting...");
-        connectWiFi();
-        return;
-    }
-    
-    if (digitalRead(PIR_PIN) == HIGH && millis() - lastMotionTime > MOTION_COOLDOWN) {
-        lastMotionTime = millis();
-        HTTPClient http;
-        http.begin(String(flaskServer) + "/motion");
-        http.addHeader("Content-Type", "application/json");
-        int httpResponseCode = http.POST("{\"source\":\"esp32\"}");
-        if (httpResponseCode > 0) {
-            Serial.println("Motion alert sent");
-        }
-        http.end();
-    }
-    
+void pollCommand() {
     HTTPClient http;
+    http.setTimeout(10000);
     http.begin(String(flaskServer) + "/command");
     int httpResponseCode = http.GET();
     
@@ -98,8 +81,33 @@ void loop() {
             moveServo(channel, angle);
             Serial.printf("Servo %d -> %d\n", channel, angle);
         }
+    } else {
+        Serial.printf("Poll failed: %d\n", httpResponseCode);
     }
     
     http.end();
-    delay(200);
+}
+
+void loop() {
+    if (WiFi.status() != WL_CONNECTED) {
+        Serial.println("WiFi disconnected, reconnecting...");
+        connectWiFi();
+        return;
+    }
+    
+    if (digitalRead(PIR_PIN) == HIGH && millis() - lastMotionTime > MOTION_COOLDOWN) {
+        lastMotionTime = millis();
+        HTTPClient http;
+        http.begin(String(flaskServer) + "/motion");
+        http.addHeader("Content-Type", "application/json");
+        int httpResponseCode = http.POST("{\"source\":\"esp32\"}");
+        if (httpResponseCode > 0) {
+            Serial.println("Motion alert sent");
+        }
+        http.end();
+    }
+    
+    pollCommand();
+    
+    delay(100);
 }
